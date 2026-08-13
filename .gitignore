@@ -1,0 +1,35 @@
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Generated artifacts
+/artifacts/**
+!/artifacts/**/.gitkeep
+downloads/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+
+
+# Cursor
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
+
+# Allure
+/allure-results/
+/allure-report/

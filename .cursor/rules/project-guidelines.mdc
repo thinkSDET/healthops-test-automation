@@ -1,0 +1,26 @@
+---
+description: Bootstrap for HealthOps test automation — points to canonical ai-guidelines
+alwaysApply: true
+---
+
+# HealthOps project guidelines
+
+This repository uses **tool-agnostic canonical guidance** under `ai-guidelines/`.
+
+## Before making changes
+
+1. Read [AGENTS.md](../../AGENTS.md) for the repository bootstrap.
+2. Follow the canonical documents in `ai-guidelines/` — they are the **single source of truth** for architecture, test strategy, test data, and contribution practices.
+3. **Inspect existing code** before introducing page objects, workflows, fixtures, factories, or tests.
+4. **Reuse** existing abstractions; do not duplicate them.
+5. Stay within the requested scope; do not reinitialize Playwright or modify `playwright.config.ts` unless explicitly asked.
+
+## Canonical documents
+
+- `ai-guidelines/AI-ASSISTANT-GUIDELINES.md`
+- `ai-guidelines/architecture/automation-architecture.md`
+- `ai-guidelines/test-strategy/test-strategy.md`
+- `ai-guidelines/test-data/test-data-strategy.md`
+- `ai-guidelines/contribution/contribution-guide.md`
+
+Do not duplicate these rules here. Consult them before architectural changes.
