@@ -24,7 +24,7 @@ export class LoginPage {
             await this.signIn.click()
     }
 
-    async createAccount(){
+    async openRegistrationForm(){
         await this.createAccountLink.click()
     }
 }

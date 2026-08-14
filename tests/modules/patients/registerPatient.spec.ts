@@ -3,7 +3,7 @@ import patientRegistrationTestData from '../../../src/data/datasets/auth/patient
 
 test('@AUTH-006 - Register patient with required profile fields',async({page,loginPage,registerPage})=>{
      await page.goto("http://localhost:5173/login")
-     await loginPage.createAccount()
+     await loginPage.openRegistrationForm()
      await registerPage.register(patientRegistrationTestData.validPatientRegistration)
      await page.waitForTimeout(20000)
 })
