@@ -1,15 +1,11 @@
-import { expect, test } from '@playwright/test';
-import { LoginPage } from '../../../src/pages/auth/LoginPage';
-import { DashboardPage } from '../../../src/pages/dashboard/DashboardPage';
+import { test,expect } from '../../../src/fixtures/pageObjectFixture';
 import loginTestData from '../../../src/data/datasets/auth/login.json'
 
-test('AUTH-001 - Valid admin login redirects to dashboard',async({page})=>{
+test('AUTH-001 - Valid admin login redirects to dashboard',async({loginPage,dashboardPage,page})=>{
     
-    const loginPage = new LoginPage(page)
-    const dahsboardPage = new DashboardPage(page)
     await page.goto("http://localhost:5173/login")
     await loginPage.login(loginTestData.adminLogin.email,loginTestData.adminLogin.password)
-    expect(await dahsboardPage.getAppUserName()).toBe("System Administrator")
-    expect(await dahsboardPage.getAppUserRole()).toBe("ADMIN")
-    await page.waitForTimeout(3000)
+    await expect(page).toHaveURL('http://localhost:5173/dashboard')
+    expect(await dashboardPage.getAppUserName()).toBe("System Administrator")
+    expect(await dashboardPage.getAppUserRole()).toBe("ADMIN")
 })

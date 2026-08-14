@@ -9,9 +9,9 @@ export class LoginPage {
 
     constructor(page :Page){
         this.page = page
-        this.emailAddress = page.locator("input#email")
-        this.password = page.locator("input#password")
-        this.signIn = page.locator("button#loginSubmit")
+        this.emailAddress = this.page.locator("input#email")
+        this.password = this.page.locator("input#password")
+        this.signIn = this.page.locator("button#loginSubmit")
     }
     
     async login(emailAddress : string, password :string){

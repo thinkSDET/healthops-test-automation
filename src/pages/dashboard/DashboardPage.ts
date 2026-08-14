@@ -7,15 +7,15 @@ export class DashboardPage {
     private page: Page
     constructor(page: Page) {
         this.page = page
-        this.appUserName = page.locator("//span[@class='app-user-name']")
-        this.appUserRole = page.locator("//span[@class='app-user-role']")
+        this.appUserName = this.page.locator("//span[@class='app-user-name']")
+        this.appUserRole = this.page.locator("//span[@class='app-user-role']")
     }
 
     async getAppUserName(): Promise<string> {
         return await this.appUserName.innerText()
     }
 
-    async getAppUserRole(): Promise<String> {
+    async getAppUserRole(): Promise<string> {
         return await this.appUserRole.innerText()
     }
 
