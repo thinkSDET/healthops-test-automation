@@ -2,5 +2,9 @@
   "adminLogin": {
     "email": "admin@healthcare.local",
     "password": "Admin@12345"
+  },
+   "adminLoginWrongPassword": {
+    "email": "admin@healthcare.local",
+    "password": "Admin@123456"
   }
 }
