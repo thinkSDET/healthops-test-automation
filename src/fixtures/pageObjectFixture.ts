@@ -1,10 +1,10 @@
 import {test as base,expect} from '@playwright/test'
 import { LoginPage } from '../pages/auth/LoginPage'
-import { DashboardPage } from '../pages/dashboard/DashboardPage'
+import { DashboardHeaderComponent } from '../pages/dashboard/DashboardHeaderComponent'
 
 type pageObjectFixture = {
     loginPage : LoginPage
-    dashboardPage : DashboardPage
+    dashboardHeaderComponent : DashboardHeaderComponent
 }
 
 
@@ -14,8 +14,8 @@ export const test = base.extend<pageObjectFixture>({
      await use(new LoginPage(page))
   },
 
-  dashboardPage : async ({page},use) =>{
-    await use(new DashboardPage(page))
+  dashboardHeaderComponent : async ({page},use) =>{
+    await use(new DashboardHeaderComponent(page))
   }
 })
 
