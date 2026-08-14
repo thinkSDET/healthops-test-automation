@@ -8,11 +8,13 @@
 import {test as base,expect} from '@playwright/test'
 import { LoginPage } from '../pages/auth/LoginPage'
 import { DashboardHeaderComponent } from '../pages/dashboard/DashboardHeaderComponent'
+import { RegisterPage } from '../pages/auth/RegisterPage'
 
 /** Declares which extra dependencies each test can request in its callback. */
 type pageObjectFixture = {
     loginPage : LoginPage
     dashboardHeaderComponent : DashboardHeaderComponent
+    registerPage: RegisterPage
 }
 
 /** Extends the base Playwright `test` with the page objects listed above. */
@@ -26,6 +28,10 @@ export const test = base.extend<pageObjectFixture>({
   /** Provides a DashboardHeaderComponent bound to the current browser page. */
   dashboardHeaderComponent : async ({page},use) =>{
     await use(new DashboardHeaderComponent(page))
+  },
+
+  registerPage : async ({page},use)=>{
+    await use(new RegisterPage(page))
   }
 })
 
