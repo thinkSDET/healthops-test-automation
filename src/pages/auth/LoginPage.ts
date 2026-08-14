@@ -5,6 +5,7 @@ export class LoginPage {
      readonly emailAddress :Locator
      readonly password :Locator
      readonly signIn :Locator
+     readonly authError : Locator
      page :Page
 
     constructor(page :Page){
@@ -12,6 +13,7 @@ export class LoginPage {
         this.emailAddress = this.page.locator("input#email")
         this.password = this.page.locator("input#password")
         this.signIn = this.page.locator("button#loginSubmit")
+        this.authError = this.page.locator("//div[@class='auth-error']")
     }
     
     async login(emailAddress : string, password :string){
