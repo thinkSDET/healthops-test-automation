@@ -1,35 +1,77 @@
 /**
- * Custom Playwright test entry point with page-object fixtures.
- *
- * Tests import `test` and `expect` from this file instead of `@playwright/test`
- * so page objects are created once per test and injected automatically —
- * specs do not need to call `new LoginPage(page)` themselves.
+ * Page Object Fixture Module
+ * 
+ * PURPOSE:
+ * Provides pre-instantiated page objects (LoginPage, DashboardHeaderComponent, etc.)
+ * to tests via Playwright's fixture system. Each page object is bound to the current browser page.
+ * 
+ * RESPONSIBILITY:
+ * - Instantiates page objects with the active browser page
+ * - Injects page objects into tests that request them
+ * - Ensures each test gets a fresh page object instance
+ * - Eliminates boilerplate: tests don't need to write `new LoginPage(page)`
+ * 
+ * HOW IT WORKS:
+ * When a test requests a page object fixture (e.g., loginPage), Playwright:
+ * 1. Gets the current page from the browser context
+ * 2. Creates a new instance of that page object, bound to that page
+ * 3. Passes it to the test via the fixture callback
+ * 4. Cleans up after the test ends
  */
+
 import {test as base,expect} from '@playwright/test'
 import { LoginPage } from '../pages/auth/LoginPage'
 import { DashboardHeaderComponent } from '../pages/dashboard/DashboardHeaderComponent'
 import { RegisterPage } from '../pages/auth/RegisterPage'
 
-/** Declares which extra dependencies each test can request in its callback. */
+/** 
+ * Declares the shape of page object fixtures available to tests.
+ * Each property is a page object class that encapsulates interactions with a specific page or component.
+ */
 type pageObjectFixture = {
+    /** Encapsulates login page selectors and interactions (login, error checking, etc.) */
     loginPage : LoginPage
+    /** Encapsulates dashboard header component selectors and interactions (user name, role display, etc.) */
     dashboardHeaderComponent : DashboardHeaderComponent
+    /** Encapsulates patient registration page selectors and interactions */
     registerPage: RegisterPage
 }
 
-/** Extends the base Playwright `test` with the page objects listed above. */
+/** Extends the base Playwright `test` with page object fixtures. Each fixture creates a fresh instance per test. */
 export const test = base.extend<pageObjectFixture>({
 
-  /** Provides a LoginPage bound to the current browser page for this test. */
+  /** 
+   * loginPage fixture - provides a LoginPage instance bound to the current browser page.
+   * WHAT IT DOES:
+   * - Takes the current `page` from Playwright context
+   * - Creates a new LoginPage instance and passes the page to it
+   * - Injects the LoginPage instance into the test
+   * - Test accesses via: loginPage parameter (e.g., await loginPage.login(email, password))
+   */
   loginPage : async ({page},use)=>{
      await use(new LoginPage(page))
   },
 
-  /** Provides a DashboardHeaderComponent bound to the current browser page. */
+  /** 
+   * dashboardHeaderComponent fixture - provides a DashboardHeaderComponent instance bound to the current browser page.
+   * WHAT IT DOES:
+   * - Takes the current `page` from Playwright context
+   * - Creates a new DashboardHeaderComponent instance and passes the page to it
+   * - Injects the component instance into the test
+   * - Test accesses via: dashboardHeaderComponent parameter (e.g., await dashboardHeaderComponent.appUserName.textContent())
+   */
   dashboardHeaderComponent : async ({page},use) =>{
     await use(new DashboardHeaderComponent(page))
   },
 
+  /** 
+   * registerPage fixture - provides a RegisterPage instance bound to the current browser page.
+   * WHAT IT DOES:
+   * - Takes the current `page` from Playwright context
+   * - Creates a new RegisterPage instance and passes the page to it
+   * - Injects the RegisterPage instance into the test
+   * - Test accesses via: registerPage parameter (e.g., await registerPage.register(data))
+   */
   registerPage : async ({page},use)=>{
     await use(new RegisterPage(page))
   }
