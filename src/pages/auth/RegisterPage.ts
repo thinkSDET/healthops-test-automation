@@ -43,5 +43,6 @@ export class RegisterPage {
         await this.gender.selectOption(data.gender)
         await this.phoneNumber.fill(data.phoneNumber)
         await this.address.fill(data.address)
+        await this.createAccount.click()
     }
 }

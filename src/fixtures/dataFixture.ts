@@ -23,6 +23,7 @@ import loginTestData from '../data/datasets/auth/login.json'
 /** Declares the shape of data fixtures available to tests. */
 type DataFixture = {
     /** Patient registration test data (valid/invalid scenarios, required fields, etc.) */
+    //"patientRegistration fixture mein exactly wahi type/structure ka data aayega jo patientRegistrationTestData ka hai."
     patientRegistration: typeof patientRegistrationTestData
     /** Login test data (valid credentials, wrong passwords, invalid users, etc.) */
     login : typeof loginTestData

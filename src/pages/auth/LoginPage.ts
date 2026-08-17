@@ -22,6 +22,7 @@ export class LoginPage {
             await this.emailAddress.fill(emailAddress)
             await this.password.fill(password)
             await this.signIn.click()
+            await this.page.waitForURL('http://localhost:5173/dashboard')
     }
 
     async openRegistrationForm(){

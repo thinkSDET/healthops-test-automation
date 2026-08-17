@@ -2,7 +2,7 @@
   "validPatientRegistration": {
     "firstName": "John",
     "lastName": "Doe",
-    "emailAddress": "john.doe@healthcare.local",
+    "emailAddress": "john01.doe@healthcare.local",
     "password": "Test@12345",
     "confirmPassword": "Test@12345",
     "accountType": "Patient",
