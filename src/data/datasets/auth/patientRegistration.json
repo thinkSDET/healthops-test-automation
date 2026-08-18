@@ -2,13 +2,13 @@
   "validPatientRegistration": {
     "firstName": "John",
     "lastName": "Doe",
-    "emailAddress": "john01.doe@healthcare.local",
+    "emailAddress": "",
     "password": "Test@12345",
     "confirmPassword": "Test@12345",
     "accountType": "Patient",
     "dateOfBirth": "1990-01-15",
     "gender": "Male",
-    "phoneNumber": "9876543210",
+    "phoneNumber": "",
     "address": "123 Main Street, US"
   }
 }

@@ -18,6 +18,7 @@
 import { test as base, expect } from '@playwright/test'
 import patientRegistrationTestData from '../data/datasets/auth/patientRegistration.json'
 import loginTestData from '../data/datasets/auth/login.json'
+import { RegisterDataFactory } from '../data/factories/RegisterDataFactory'
 
 
 /** Declares the shape of data fixtures available to tests. */
@@ -27,6 +28,7 @@ type DataFixture = {
     patientRegistration: typeof patientRegistrationTestData
     /** Login test data (valid credentials, wrong passwords, invalid users, etc.) */
     login : typeof loginTestData
+    validRegistration : ReturnType<typeof RegisterDataFactory.validRegistration>
 }
 
 /** Extends the base test with DataFixture. Each fixture is lazy-loaded when requested. */
@@ -54,5 +56,10 @@ export const test = base.extend<DataFixture>({
      */
     login : async ({}, use)=>{
         await use(loginTestData)
+    },
+
+    validRegistration : async({},use)=>{
+        const registrationData = RegisterDataFactory.validRegistration()
+        await use(registrationData)
     }
 })
