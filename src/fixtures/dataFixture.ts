@@ -16,7 +16,7 @@
  */
 
 import { test as base, expect } from '@playwright/test'
-import patientRegistrationTestData from '../data/datasets/auth/patientRegistration.json'
+import registrationTestData from '../data/datasets/auth/registration.json'
 import loginTestData from '../data/datasets/auth/login.json'
 import { RegisterDataFactory } from '../data/factories/RegisterDataFactory'
 
@@ -25,10 +25,11 @@ import { RegisterDataFactory } from '../data/factories/RegisterDataFactory'
 type DataFixture = {
     /** Patient registration test data (valid/invalid scenarios, required fields, etc.) */
     //"patientRegistration fixture mein exactly wahi type/structure ka data aayega jo patientRegistrationTestData ka hai."
-    patientRegistration: typeof patientRegistrationTestData
+    registrationTestData: typeof registrationTestData
     /** Login test data (valid credentials, wrong passwords, invalid users, etc.) */
-    login : typeof loginTestData
-    validRegistration : ReturnType<typeof RegisterDataFactory.validRegistration>
+    login: typeof loginTestData
+    validPatientRegistration: ReturnType<typeof RegisterDataFactory.validRegistration>
+    validDoctorRegistration: ReturnType<typeof RegisterDataFactory.validRegistration>
 }
 
 /** Extends the base test with DataFixture. Each fixture is lazy-loaded when requested. */
@@ -42,10 +43,10 @@ export const test = base.extend<DataFixture>({
      * - Passes it to the test via the `use` callback
      * - Test accesses via: patientRegistration parameter
      */
-    patientRegistration: async ({ }, use) => {
-        await use(patientRegistrationTestData)
+    registrationTestData: async ({ }, use) => {
+        await use(registrationTestData)
     },
-    
+
     /** 
      * login fixture - provides login test data (credentials, error scenarios, etc.).
      * WHAT IT DOES:
@@ -54,12 +55,16 @@ export const test = base.extend<DataFixture>({
      * - Passes it to the test via the `use` callback
      * - Test accesses via: login parameter
      */
-    login : async ({}, use)=>{
+    login: async ({ }, use) => {
         await use(loginTestData)
     },
 
-    validRegistration : async({},use)=>{
-        const registrationData = RegisterDataFactory.validRegistration()
+    validPatientRegistration: async ({ }, use) => {
+        const registrationData = RegisterDataFactory.validRegistration("patient")
+        await use(registrationData)
+    },
+    validDoctorRegistration: async ({ }, use) => {
+        const registrationData = RegisterDataFactory.validRegistration("doctor")
         await use(registrationData)
     }
 })

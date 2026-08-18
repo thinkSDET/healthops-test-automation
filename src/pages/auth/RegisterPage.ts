@@ -1,5 +1,5 @@
 import { Locator, Page } from "@playwright/test"
-import {RegistrationData} from '../../types/auth/Registration'
+import { RegistrationData } from '../../types/auth/Registration'
 
 export class RegisterPage {
 
@@ -31,7 +31,7 @@ export class RegisterPage {
         this.createAccount = this.page.locator("//button[@type='submit']")
     }
 
-    async register(data: RegistrationData) {
+    async register(data: RegistrationData, role: string) {
 
         await this.firstName.fill(data.firstName)
         await this.lastName.fill(data.lastName)
@@ -39,10 +39,12 @@ export class RegisterPage {
         await this.password.fill(data.password)
         await this.confirmPassword.fill(data.confirmPassword)
         await this.accountType.selectOption(data.accountType)
-        await this.dob.fill(data.dateOfBirth)
-        await this.gender.selectOption(data.gender)
-        await this.phoneNumber.fill(data.phoneNumber)
-        await this.address.fill(data.address)
+        if (role.toLowerCase() === 'patient') {
+            await this.dob.fill(data.dateOfBirth!)
+            await this.gender.selectOption(data.gender!)
+            await this.phoneNumber.fill(data.phoneNumber!)
+            await this.address.fill(data.address!)
+        }
         await this.createAccount.click()
     }
 }
