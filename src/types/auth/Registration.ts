@@ -28,8 +28,8 @@ export type RegistrationData = {
     password: string
     confirmPassword: string
     accountType: string
-    dateOfBirth: string
-    gender: string
-    phoneNumber: string
-    address: string
+    dateOfBirth?: string
+    gender?: string
+    phoneNumber?: string
+    address?: string
 }
