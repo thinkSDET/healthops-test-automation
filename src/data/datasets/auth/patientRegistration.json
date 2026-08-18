@@ -1,0 +1,14 @@
+{
+  "validPatientRegistration": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "emailAddress": "",
+    "password": "Test@12345",
+    "confirmPassword": "Test@12345",
+    "accountType": "Patient",
+    "dateOfBirth": "1990-01-15",
+    "gender": "Male",
+    "phoneNumber": "",
+    "address": "123 Main Street, US"
+  }
+}
