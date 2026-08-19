@@ -30,6 +30,7 @@ type DataFixture = {
     login: typeof loginTestData
     validPatientRegistration: ReturnType<typeof RegisterDataFactory.validRegistration>
     validDoctorRegistration: ReturnType<typeof RegisterDataFactory.validRegistration>
+    validPharmacistRegistration: ReturnType<typeof RegisterDataFactory.validRegistration>
 }
 
 /** Extends the base test with DataFixture. Each fixture is lazy-loaded when requested. */
@@ -65,6 +66,10 @@ export const test = base.extend<DataFixture>({
     },
     validDoctorRegistration: async ({ }, use) => {
         const registrationData = RegisterDataFactory.validRegistration("doctor")
+        await use(registrationData)
+    },
+    validPharmacistRegistration :async ({},use) =>{
+        const registrationData = RegisterDataFactory.validRegistration("pharmacist")
         await use(registrationData)
     }
 })
