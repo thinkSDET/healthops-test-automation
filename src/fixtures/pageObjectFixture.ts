@@ -21,8 +21,9 @@
 
 import {test as base,expect} from '@playwright/test'
 import { LoginPage } from '../pages/auth/LoginPage'
-import { DashboardHeaderComponent } from '../pages/dashboard/DashboardHeaderComponent'
+import { DashboardHeaderComponent } from '../components/dashboard/DashboardHeaderComponent'
 import { RegisterPage } from '../pages/auth/RegisterPage'
+import { DashboardPage } from '../pages/dashboard/DashboardPage'
 
 /** 
  * Declares the shape of page object fixtures available to tests.
@@ -32,7 +33,7 @@ type pageObjectFixture = {
     /** Encapsulates login page selectors and interactions (login, error checking, etc.) */
     loginPage : LoginPage
     /** Encapsulates dashboard header component selectors and interactions (user name, role display, etc.) */
-    dashboardHeaderComponent : DashboardHeaderComponent
+    dashboardPage : DashboardPage
     /** Encapsulates patient registration page selectors and interactions */
     registerPage: RegisterPage
 }
@@ -60,8 +61,8 @@ export const test = base.extend<pageObjectFixture>({
    * - Injects the component instance into the test
    * - Test accesses via: dashboardHeaderComponent parameter (e.g., await dashboardHeaderComponent.appUserName.textContent())
    */
-  dashboardHeaderComponent : async ({page},use) =>{
-    await use(new DashboardHeaderComponent(page))
+  dashboardPage : async ({page},use) =>{
+    await use(new DashboardPage(page))
   },
 
   /** 
