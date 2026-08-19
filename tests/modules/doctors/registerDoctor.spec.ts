@@ -12,6 +12,4 @@ test("AUTH-008 - Register doctor  with required profile fields", async ({ page, 
      await expect(page).toHaveURL('http://localhost:5173/dashboard')
      await expect(dashboardHeaderComponent.appUserName).toHaveText("Harsh Rane")
      await expect(dashboardHeaderComponent.appUserRole).toHaveText("DOCTOR")
-     await page.waitForTimeout(30000)
-
 })
