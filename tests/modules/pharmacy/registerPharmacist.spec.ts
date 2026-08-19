@@ -11,6 +11,6 @@ test("AUTH-008 - Register pharmacist  with required profile fields", async ({ pa
      await expect(page).toHaveURL(URLs.LOGIN)
      await loginPage.login(validPharmacistRegistration.emailAddress, validPharmacistRegistration.password)
      await expect(page).toHaveURL(URLs.DASHBOARD)
-     await expect(dashboardHeaderComponent.appUserName).toHaveText("Tata OneMG")
-     await expect(dashboardHeaderComponent.appUserRole).toHaveText("PHARMACIST")
+     await expect(dashboardHeaderComponent.appUserName).toHaveText(`${validPharmacistRegistration.firstName} ${validPharmacistRegistration.lastName}`)
+     await expect(dashboardHeaderComponent.appUserRole).toHaveText(`${validPharmacistRegistration.accountType}`, {ignoreCase : true})
 })
