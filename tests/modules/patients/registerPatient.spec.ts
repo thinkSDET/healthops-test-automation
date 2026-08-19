@@ -11,6 +11,6 @@ test('@AUTH-006 - Register patient with required profile fields',async({page,log
      await expect(page).toHaveURL(URLs.LOGIN)
      await loginPage.login(validPatientRegistration.emailAddress,validPatientRegistration.password)
      await expect(page).toHaveURL(URLs.DASHBOARD)
-     await expect(dashboardHeaderComponent.appUserName).toHaveText("John Doe")
-     await expect(dashboardHeaderComponent.appUserRole).toHaveText("PATIENT")
+     await expect(dashboardHeaderComponent.appUserName).toHaveText(`${validPatientRegistration.firstName} ${validPatientRegistration.lastName}`)
+     await expect(dashboardHeaderComponent.appUserRole).toHaveText(`${validPatientRegistration.accountType}`,{ignoreCase :true})
 })
