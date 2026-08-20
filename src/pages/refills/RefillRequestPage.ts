@@ -1,11 +1,9 @@
 import { Locator, Page } from "@playwright/test";
+import { ModulePageBase } from "../pageBase/ModulePageBase";
 
-export class RefillRequestPage {
+export class RefillRequestPage extends ModulePageBase {
 
-    readonly refillRequestHeader: Locator;
-    page : Page
     constructor(page:Page){
-      this.page = page
-      this.refillRequestHeader = page.locator('header.patients-header h1');
+      super(page)
     }
 }

@@ -1,11 +1,10 @@
 import { Locator, Page } from "@playwright/test";
+import { ModulePageBase } from "../pageBase/ModulePageBase";
 
-export class PatientsPage {
+export class PatientsPage extends ModulePageBase {
 
-    readonly patientsHeader: Locator;
-    page : Page
+   
     constructor(page:Page){
-      this.page = page
-      this.patientsHeader = page.locator('header.patients-header h1');
+     super(page)
     }
 }

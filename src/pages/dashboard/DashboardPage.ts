@@ -1,6 +1,7 @@
 import { DashboardHeaderComponent } from "../../components/dashboard/DashboardHeaderComponent";
 import { Page } from "@playwright/test";
 import { DashboardModuleCardComponent } from "../../components/dashboard/DashboardModuleCardComponent";
+import { URLs } from "../../data/constants/urls";
 
 export class DashboardPage {
 
@@ -13,7 +14,9 @@ export class DashboardPage {
         this.dashBoardHeader = new DashboardHeaderComponent(page)
         this.dashboardModuleCardComponent = new DashboardModuleCardComponent(page)
     }
-
+    async navigateToDashboard() {
+        await this.page.goto(URLs.DASHBOARD);
+    }
     async openDoctors() {
         await this.dashboardModuleCardComponent.clickDoctors();
     }

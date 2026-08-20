@@ -1,11 +1,9 @@
 import { Locator, Page } from "@playwright/test";
+import { ModulePageBase } from "../pageBase/ModulePageBase";
 
-export class AppointmentRequestPage {
+export class AppointmentRequestPage extends ModulePageBase{
 
-    readonly appointmentRequestHeader: Locator;
-    page : Page
     constructor(page:Page){
-      this.page = page
-      this.appointmentRequestHeader = page.locator('header.patients-header h1');
+     super(page)
     }
 }
