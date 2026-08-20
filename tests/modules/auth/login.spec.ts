@@ -2,12 +2,12 @@ import { Messages } from '../../../src/data/constants/appMessages';
 import { URLs } from '../../../src/data/constants/urls';
 import { test,expect } from '../../../src/fixtures/customFixtures';
 
-test('AUTH-001 - Valid admin login redirects to dashboard',async({loginPage,dashboardHeaderComponent,page,login})=>{
+test('AUTH-001 - Valid admin login redirects to dashboard',async({loginPage,dashboardPage,page,login})=>{
     await page.goto("http://localhost:5173/login")
     await loginPage.login(login.admin.valid.email,login.admin.valid.password)
     await expect(page).toHaveURL(URLs.DASHBOARD)
-    await expect(dashboardHeaderComponent.appUserName).toHaveText(`${login.admin.valid.aapUserName}`)
-    await expect(dashboardHeaderComponent.appUserRole).toHaveText(`${login.admin.valid.appUserRole}`)
+    await expect(dashboardPage.dashBoardHeader.appUserName).toHaveText(`${login.admin.valid.aapUserName}`)
+    await expect(dashboardPage.dashBoardHeader.appUserRole).toHaveText(`${login.admin.valid.appUserRole}`)
 })
 
 

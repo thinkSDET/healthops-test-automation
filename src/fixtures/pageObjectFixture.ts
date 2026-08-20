@@ -21,8 +21,17 @@
 
 import {test as base,expect} from '@playwright/test'
 import { LoginPage } from '../pages/auth/LoginPage'
-import { DashboardHeaderComponent } from '../pages/dashboard/DashboardHeaderComponent'
+import { DashboardHeaderComponent } from '../components/dashboard/DashboardHeaderComponent'
 import { RegisterPage } from '../pages/auth/RegisterPage'
+import { DashboardPage } from '../pages/dashboard/DashboardPage'
+import { PatientsPage } from '../pages/patients/PatientsPage'
+import { DoctorsPage } from '../pages/doctors/DoctorsPage'
+import { AppointmentsPage } from '../pages/appointments/Appointments'
+import { AppointmentRequestPage } from '../pages/appointmentRequests/AppointmentRequestsPage'
+import { RefillRequestPage } from '../pages/refills/RefillRequestPage'
+import { InventoryPage } from '../pages/inventory/InventoryPage'
+import { ReplenishmentPage } from '../pages/Replenishment/ReplenishmentPage'
+import { AuditLogsPage } from '../pages/audit/AuditLogsPage'
 
 /** 
  * Declares the shape of page object fixtures available to tests.
@@ -32,9 +41,17 @@ type pageObjectFixture = {
     /** Encapsulates login page selectors and interactions (login, error checking, etc.) */
     loginPage : LoginPage
     /** Encapsulates dashboard header component selectors and interactions (user name, role display, etc.) */
-    dashboardHeaderComponent : DashboardHeaderComponent
+    dashboardPage : DashboardPage
     /** Encapsulates patient registration page selectors and interactions */
     registerPage: RegisterPage
+    patientsPage : PatientsPage
+    doctorsPage : DoctorsPage
+    appointmentsPage:AppointmentsPage
+    appointmentRequestPage:AppointmentRequestPage
+    refillRequestPage:RefillRequestPage
+    inventoryPage:InventoryPage
+    replenishmentPage:ReplenishmentPage
+    auditLogsPage:AuditLogsPage
 }
 
 /** Extends the base Playwright `test` with page object fixtures. Each fixture creates a fresh instance per test. */
@@ -60,8 +77,8 @@ export const test = base.extend<pageObjectFixture>({
    * - Injects the component instance into the test
    * - Test accesses via: dashboardHeaderComponent parameter (e.g., await dashboardHeaderComponent.appUserName.textContent())
    */
-  dashboardHeaderComponent : async ({page},use) =>{
-    await use(new DashboardHeaderComponent(page))
+  dashboardPage : async ({page},use) =>{
+    await use(new DashboardPage(page))
   },
 
   /** 
@@ -74,6 +91,30 @@ export const test = base.extend<pageObjectFixture>({
    */
   registerPage : async ({page},use)=>{
     await use(new RegisterPage(page))
+  },
+  patientsPage : async({page},use) =>{
+      await use(new PatientsPage(page))
+  },
+  doctorsPage : async({page},use) =>{
+    await use(new DoctorsPage(page))
+  },
+   appointmentsPage : async({page},use) =>{
+    await use(new AppointmentsPage(page))
+  },
+  appointmentRequestPage : async({page},use) =>{
+    await use(new AppointmentRequestPage(page))
+  },
+  refillRequestPage : async({page},use) =>{
+    await use(new RefillRequestPage(page))
+  },
+  inventoryPage : async({page},use) =>{
+    await use(new InventoryPage(page))
+  },
+  replenishmentPage : async({page},use) =>{
+    await use(new ReplenishmentPage(page))
+  },
+  auditLogsPage : async({page},use) =>{
+    await use(new AuditLogsPage(page))
   }
 })
 
