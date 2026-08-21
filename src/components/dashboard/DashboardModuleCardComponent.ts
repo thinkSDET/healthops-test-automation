@@ -1,4 +1,5 @@
 import { Locator, Page } from "@playwright/test";
+import { DashboardModule } from "../../data/constants/dashboardModules";
 
 export class DashboardModuleCardComponent {
 
@@ -11,7 +12,7 @@ export class DashboardModuleCardComponent {
     readonly inventoryCard: Locator
     readonly replenishmentCard: Locator
     readonly auditLogsCard: Locator
-    
+
     constructor(page: Page) {
         this.page = page
         this.patientCard = this.page.locator("//div[@class='dashboard-card']//h3[text()='Patients']")
@@ -24,35 +25,17 @@ export class DashboardModuleCardComponent {
         this.auditLogsCard = this.page.locator("//div[@class='dashboard-card']//h3[text()='Audit Logs']")
     }
 
-    async clickPatients() {
-        await this.patientCard.click();
+    async clickModule(module: DashboardModule) {
+        const cards: Record<DashboardModule, Locator> = {
+            patients: this.patientCard,
+            doctors: this.doctorCard,
+            appointments: this.appointmentCard,
+            appointmentRequests: this.appointmentRequestCard,
+            refillRequests: this.refillRequestCard,
+            inventory: this.inventoryCard,
+            replenishment: this.replenishmentCard,
+            auditLogs: this.auditLogsCard
+        };
+        await cards[module].click();
     }
-
-    async clickDoctors() {
-        await this.doctorCard.click();
-    }
-
-    async clickAppointments() {
-        await this.appointmentCard.click();
-    }
-
-    async clickAppointmentRequests() {
-        await this.appointmentRequestCard.click();
-    }
-
-    async clickRefillRequests() {
-        await this.refillRequestCard.click();
-    }
-
-    async clickInventory() {
-        await this.inventoryCard.click();
-    }
-
-    async clickReplenishment() {
-        await this.replenishmentCard.click();
-    }
-
-    async clickAuditLogs() {
-        await this.auditLogsCard.click();
-    }
-}
+} 

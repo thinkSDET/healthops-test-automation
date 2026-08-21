@@ -2,6 +2,7 @@ import { DashboardHeaderComponent } from "../../components/dashboard/DashboardHe
 import { Page } from "@playwright/test";
 import { DashboardModuleCardComponent } from "../../components/dashboard/DashboardModuleCardComponent";
 import { URLs } from "../../data/constants/urls";
+import { DashboardModule } from "../../data/constants/dashboardModules";
 
 export class DashboardPage {
 
@@ -17,36 +18,7 @@ export class DashboardPage {
     async navigateToDashboard() {
         await this.page.goto(URLs.DASHBOARD);
     }
-    async openDoctors() {
-        await this.dashboardModuleCardComponent.clickDoctors();
+    async openModule(module: DashboardModule) {
+        await this.dashboardModuleCardComponent.clickModule(module);
     }
-
-    async openPatients() {
-        await this.dashboardModuleCardComponent.clickPatients();
-    }
-
-    async openAppointments() {
-        await this.dashboardModuleCardComponent.clickAppointments();
-    }
-
-    async openAppointmentRequests() {
-        await this.dashboardModuleCardComponent.clickAppointmentRequests();
-    }
-
-    async openRefillRequests() {
-        await this.dashboardModuleCardComponent.clickRefillRequests();
-    }
-
-    async openInventory() {
-        await this.dashboardModuleCardComponent.clickInventory();
-    }
-
-    async openReplenishment() {
-        await this.dashboardModuleCardComponent.clickReplenishment();
-    }
-
-    async openAuditLogs() {
-        await this.dashboardModuleCardComponent.clickAuditLogs();
-    }
-
 }
