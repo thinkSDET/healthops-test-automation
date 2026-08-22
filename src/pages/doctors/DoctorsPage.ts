@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page,expect } from "@playwright/test";
 import { ModulePageBase } from "../pageBase/ModulePageBase";
 import { AdminCreateDoctorData } from "../../types/auth/TestDataTypes";
 export class DoctorsPage extends ModulePageBase {
@@ -14,20 +14,25 @@ export class DoctorsPage extends ModulePageBase {
     readonly experience : Locator
     readonly email : Locator
     readonly phone : Locator
+    readonly searchInput : Locator
+    readonly doctorStatus :Locator
 
     constructor(page:Page){
       super(page)
       this.addButton =  page.locator("//button[text()='+ Add Doctor']")
+      
+      this.doctorcode = page.locator("//input[@placeholder='e.g. DOC-1001']")
+      this.licenseNumber = page.locator("//input[@placeholder='Medical license number']")
+      this.firstName = page.locator("//input[@placeholder='First name']")
+      this.lastName = page.locator("//input[@placeholder='Last name']")
+      this.specialization = page.locator("//input[@placeholder='e.g. Cardiology']")
+      this.experience = page.locator("//input[@placeholder='Years']")
+      this.email = page.locator("//input[@placeholder='doctor@example.com']")
+      this.phone = page.locator("//input[@placeholder='+91 9876543210']")
+      this.searchInput = page.locator("//input[@placeholder='Search doctors...']");
       this.createButton = page.locator("//button[text()='Create Doctor']")
       this.cancelButton = page.locator("//button[text()='Cancel']")
-      this.doctorcode = page.locator("//input[@placeholder='e.g. DOC-1001']")
-      this.licenseNumber = page.locator("//*[@name='licenseNumber']")
-      this.firstName = page.locator("//*[@name='firstName']")
-      this.lastName = page.locator("//*[@name='lastName']")
-      this.specialization = page.locator("//*[@name='specialization']")
-      this.experience = page.locator("//*[@name='experience']")
-      this.email = page.locator("//*[@name='email']")
-      this.phone = page.locator("//*[@name='phone']")
+      this.doctorStatus = page.locator("(//article[contains(@class, 'doctor-record-card')]//div[2]//div//span)[1]");
     }
 
     async CreateDoctor(data : AdminCreateDoctorData){
@@ -42,4 +47,8 @@ export class DoctorsPage extends ModulePageBase {
       await this.phone.fill(data.phone)
       await this.createButton.click()
     }
+
+    async searchDoctor(searchText: string) {
+    await this.searchInput.fill(searchText);
+}
 }
