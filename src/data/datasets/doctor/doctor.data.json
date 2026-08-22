@@ -1,0 +1,12 @@
+{
+  "validDoctor": {
+    "doctorCode": "",
+    "licenseNumber": "",
+    "firstName": "",
+    "lastName": "",
+    "specialization": "Cardiology",
+    "experience": "10",
+    "email": "",
+    "phone": ""
+  }
+}

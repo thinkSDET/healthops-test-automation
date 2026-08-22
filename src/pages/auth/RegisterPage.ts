@@ -1,5 +1,5 @@
 import { Locator, Page } from "@playwright/test"
-import { RegistrationData } from '../../types/auth/Registration'
+import { RegistrationData } from '../../types/auth/TestDataTypes'
 
 export class RegisterPage {
 

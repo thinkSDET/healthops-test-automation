@@ -33,3 +33,15 @@ export type RegistrationData = {
     phoneNumber?: string
     address?: string
 }
+
+
+export type AdminCreateDoctorData = {
+    doctorCode: string;
+    licenseNumber: string;
+    firstName: string;
+    lastName: string;
+    specialization: string;
+    experience: string;
+    email: string;
+    phone: string;
+};
