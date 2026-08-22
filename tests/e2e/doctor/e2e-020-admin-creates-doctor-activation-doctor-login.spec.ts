@@ -12,6 +12,7 @@ test('E2E-020: Admin creates Doctor and completes activation and login', async (
     resetPassword
 }) => {
     const newDoctorPassword = '12345678';
+    const randomPassword = '123456'
     await test.step('Create Doctor as Admin', async () => {
         await page.goto('/login');
         await loginPage.login(login.admin.valid.email, login.admin.valid.password);
@@ -26,7 +27,7 @@ test('E2E-020: Admin creates Doctor and completes activation and login', async (
 
     await test.step('Verify Doctor cannot login before activation', async () => {
         await dashboardPage.dashBoardHeader.logout();
-        await loginPage.login(validDoctor.email, newDoctorPassword);
+        await loginPage.login(validDoctor.email, randomPassword);
         await expect(loginPage.authError).toHaveText('ACCOUNT_ACTIVATION_REQUIRED');
     });
 
