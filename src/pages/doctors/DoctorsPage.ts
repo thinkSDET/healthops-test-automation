@@ -35,7 +35,7 @@ export class DoctorsPage extends ModulePageBase {
       this.doctorStatus = page.locator("(//article[contains(@class, 'doctor-record-card')]//div[2]//div//span)[1]");
     }
 
-    async CreateDoctor(data : AdminCreateDoctorData){
+    async createDoctor(data : AdminCreateDoctorData){
       await this.addButton.click()
       await this.doctorcode.fill(data.doctorCode)
       await this.licenseNumber.fill(data.licenseNumber)
