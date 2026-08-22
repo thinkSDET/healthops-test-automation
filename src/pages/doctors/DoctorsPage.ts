@@ -50,5 +50,6 @@ export class DoctorsPage extends ModulePageBase {
 
     async searchDoctor(searchText: string) {
     await this.searchInput.fill(searchText);
+    await this.page.waitForLoadState()
 }
 }

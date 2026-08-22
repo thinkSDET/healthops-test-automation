@@ -31,6 +31,6 @@ export class LoginPage {
     }
 
     async openForgotPassword(){
-       this.forgotPasswordLink.click()
+       await this.forgotPasswordLink.click()
     }
 }
