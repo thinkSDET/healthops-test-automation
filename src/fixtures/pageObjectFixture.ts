@@ -32,6 +32,8 @@ import { RefillRequestPage } from '../pages/refills/RefillRequestPage'
 import { InventoryPage } from '../pages/inventory/InventoryPage'
 import { ReplenishmentPage } from '../pages/Replenishment/ReplenishmentPage'
 import { AuditLogsPage } from '../pages/audit/AuditLogsPage'
+import { ForgotPassword } from '../pages/auth/ForgotPassword'
+import { ResetPassword } from '../pages/auth/ResetPassword'
 
 /** 
  * Declares the shape of page object fixtures available to tests.
@@ -52,6 +54,8 @@ type pageObjectFixture = {
     inventoryPage:InventoryPage
     replenishmentPage:ReplenishmentPage
     auditLogsPage:AuditLogsPage
+    forgotPassword:ForgotPassword
+    resetPassword:ResetPassword
 }
 
 /** Extends the base Playwright `test` with page object fixtures. Each fixture creates a fresh instance per test. */
@@ -115,6 +119,12 @@ export const test = base.extend<pageObjectFixture>({
   },
   auditLogsPage : async({page},use) =>{
     await use(new AuditLogsPage(page))
+  },
+  forgotPassword : async({page},use) =>{
+    await use (new ForgotPassword(page))
+  },
+  resetPassword : async({page}, use)=>{
+    await use(new ResetPassword(page))
   }
 })
 
