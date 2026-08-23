@@ -12,12 +12,16 @@
     "address": "123 Main Street, US"
   },
   "validDoctorRegistration": {
-    "firstName": "Harsh",
-    "lastName": "Rane",
+    "firstName": "",
+    "lastName": "",
     "emailAddress": "",
     "password": "Test@12345",
     "confirmPassword": "Test@12345",
-    "accountType": "Doctor"
+    "accountType": "Doctor",
+    "specialization" :"",
+    "experience" : "",
+    "licenseNumber" :"",
+    "phoneNumber": ""
   },
   "validPharmacistRegistration": {
     "firstName": "Tata",

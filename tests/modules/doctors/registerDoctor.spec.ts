@@ -7,7 +7,6 @@ test("AUTH-008 - Register doctor  with required profile fields", async ({ page, 
      await page.goto("http://localhost:5173/login")
      await loginPage.openRegistrationForm()
      await registerPage.register(validDoctorRegistration,Roles.DOCTOR)
-     console.log(validDoctorRegistration.emailAddress)
      await expect(page).toHaveURL(URLs.LOGIN)
      await loginPage.login(validDoctorRegistration.emailAddress, validDoctorRegistration.password)
      await expect(page).toHaveURL(URLs.DASHBOARD)

@@ -32,6 +32,9 @@ export type RegistrationData = {
     gender?: string
     phoneNumber?: string
     address?: string
+    specialization?:string
+    experience?:number
+    licenseNumber?:string
 }
 
 
