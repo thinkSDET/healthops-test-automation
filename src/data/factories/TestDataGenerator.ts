@@ -27,4 +27,25 @@ export class TestDataGenerator {
         const names = ['Smith', 'Brown', 'Wilson', 'Taylor', 'Anderson'];
         return names[Math.floor(Math.random() * names.length)];
     }
+    static generateRandomNumber(): number {
+        return Math.floor(Math.random() * 50) + 1;
+    }
+    static generateDoctorSpecialization(): string {
+        const specializations = [
+            'Cardiologist',
+            'Dermatologist',
+            'Neurologist',
+            'Orthopedic Surgeon',
+            'Pediatrician',
+            'Psychiatrist',
+            'General Physician',
+            'Gynecologist',
+            'Oncologist',
+            'Ophthalmologist'
+        ];
+
+        return specializations[
+            Math.floor(Math.random() * specializations.length)
+        ];
+    }
 }

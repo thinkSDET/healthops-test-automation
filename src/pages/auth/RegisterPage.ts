@@ -14,6 +14,9 @@ export class RegisterPage {
     readonly phoneNumber: Locator
     readonly address: Locator
     readonly createAccount: Locator
+    readonly specialization : Locator
+    readonly experience : Locator
+    readonly licenseNumber : Locator
     readonly page: Page
 
     constructor(page: Page) {
@@ -26,9 +29,12 @@ export class RegisterPage {
         this.accountType = this.page.locator("select#role")
         this.dob = this.page.locator("input#dateOfBirth")
         this.gender = this.page.locator("select#gender")
-        this.phoneNumber = this.page.locator("input#phone")
+        this.phoneNumber = this.page.locator("//input[@placeholder='Enter phone number']")
         this.address = this.page.locator("input#address")
         this.createAccount = this.page.locator("//button[@type='submit']")
+        this.specialization = this.page.locator("input#specialization")
+        this.experience = this.page.locator("input#experience")
+        this.licenseNumber = this.page.locator("input#licenseNumber")
     }
 
     async register(data: RegistrationData, role: string) {
@@ -44,7 +50,13 @@ export class RegisterPage {
             await this.gender.selectOption(data.gender!)
             await this.phoneNumber.fill(data.phoneNumber!)
             await this.address.fill(data.address!)
+        } else if(role.toLocaleLowerCase() ==='doctor'){
+            await this.specialization.fill(data.specialization!)
+            await this.experience.fill(String(data.experience!))
+            await this.licenseNumber.fill(data.licenseNumber!)
+            await this.phoneNumber.fill(data.phoneNumber!)
         }
         await this.createAccount.click()
+        await this .page.waitForLoadState()
     }
 }

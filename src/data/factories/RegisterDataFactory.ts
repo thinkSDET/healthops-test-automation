@@ -13,8 +13,13 @@ export class RegisterDataFactory {
 
         return {
             ...registrationData,
+            firstName : TestDataGenerator.generateFirstName(),
+            lastName :  TestDataGenerator.generateLastName(),
             emailAddress: TestDataGenerator.generateUniqueEmail(),
-            phoneNumber: TestDataGenerator.generateUniquePhoneNumber()
+            phoneNumber: TestDataGenerator.generateUniquePhoneNumber(),
+            specialization : TestDataGenerator.generateDoctorSpecialization(),
+            experience : TestDataGenerator.generateRandomNumber(),
+            licenseNumber : TestDataGenerator.generateUniqueLicenseNumber(),
         }
 
     }
