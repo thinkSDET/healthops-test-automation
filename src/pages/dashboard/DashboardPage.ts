@@ -10,17 +10,22 @@ export class DashboardPage {
     readonly dashBoardHeader: DashboardHeaderComponent
     readonly dashboardModuleCardComponent: DashboardModuleCardComponent
     readonly updateAndSubmitButton : Locator
+    readonly rejectedReason : Locator
 
     constructor(page: Page) {
         this.page = page
         this.dashBoardHeader = new DashboardHeaderComponent(page)
         this.dashboardModuleCardComponent = new DashboardModuleCardComponent(page)
         this.updateAndSubmitButton = this.page.locator("//button[text()='Update & Resubmit']")
+        this.rejectedReason = this.page.locator("//strong[contains(text(),'Admin')]/following-sibling::p")
     }
     async navigateToDashboard() {
         await this.page.goto(URLs.DASHBOARD);
     }
     async openModule(module: DashboardModule) {
         await this.dashboardModuleCardComponent.clickModule(module);
+    }
+    async updateAndResubmit(){
+        await this.updateAndSubmitButton.click()
     }
 }
