@@ -14,9 +14,10 @@ export class RegisterPage {
     readonly phoneNumber: Locator
     readonly address: Locator
     readonly createAccount: Locator
-    readonly specialization : Locator
-    readonly experience : Locator
-    readonly licenseNumber : Locator
+    readonly specialization: Locator
+    readonly experience: Locator
+    readonly licenseNumber: Locator
+    readonly resubmitRegistration : Locator
     readonly page: Page
 
     constructor(page: Page) {
@@ -35,6 +36,7 @@ export class RegisterPage {
         this.specialization = this.page.locator("input#specialization")
         this.experience = this.page.locator("input#experience")
         this.licenseNumber = this.page.locator("input#licenseNumber")
+        this.resubmitRegistration = this.page.locator("//button[@type='submit' and text()='Resubmit Registration']")
     }
 
     async register(data: RegistrationData, role: string) {
@@ -50,13 +52,22 @@ export class RegisterPage {
             await this.gender.selectOption(data.gender!)
             await this.phoneNumber.fill(data.phoneNumber!)
             await this.address.fill(data.address!)
-        } else if(role.toLocaleLowerCase() ==='doctor'){
+        } else if (role.toLocaleLowerCase() === 'doctor') {
             await this.specialization.fill(data.specialization!)
             await this.experience.fill(String(data.experience!))
             await this.licenseNumber.fill(data.licenseNumber!)
             await this.phoneNumber.fill(data.phoneNumber!)
         }
         await this.createAccount.click()
-        await this .page.waitForLoadState()
+        await this.page.waitForLoadState()
+    }
+
+    async updateAndResubmitDoctor(data: RegistrationData) {
+        await this.specialization.fill(data.specialization!)
+         await this.password.fill(data.password)
+        await this.confirmPassword.fill(data.confirmPassword)
+        await this.experience.fill(String(data.experience!))
+        await this.resubmitRegistration.click()
+        await this.page.waitForLoadState()
     }
 }
