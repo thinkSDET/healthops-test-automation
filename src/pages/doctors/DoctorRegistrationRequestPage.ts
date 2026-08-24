@@ -12,7 +12,7 @@ export class DoctorRegistrationRequestPage extends ModulePageBase {
         this.page = page
         this.registrationActionMessage = page.locator("//div[contains(text(),'approved successfully')]")
         this.registrationRejectionMessage = page.locator("//div[contains(text(),'registration rejected.')]")
-        this.rejectionReasonInput = page.locator("//label[text()='Rejection reason']/following-sibling::textarea")
+        this.rejectionReasonInput = page.locator("//label[contains(text(),'Rejection reason')]/following-sibling::textarea")
     }
 
     getDoctorRegistrationStatus(doctorContact: string): Locator {
