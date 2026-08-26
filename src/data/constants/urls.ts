@@ -8,6 +8,7 @@ export const URLs = {
     REFILL_REQUEST: "http://localhost:5173/refill-requests",
     INVENTORY: "http://localhost:5173/inventory",
     REPLENISHMENT_REQUESTS: "http://localhost:5173/replenishment-requests",
-    AUDIT_LOGS: "http://localhost:5173/audit-logs"
+    AUDIT_LOGS: "http://localhost:5173/audit-logs",
+    REGISTER : "http://localhost:5173/register"
 
 } 

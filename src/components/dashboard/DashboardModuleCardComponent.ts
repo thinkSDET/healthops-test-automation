@@ -12,6 +12,7 @@ export class DashboardModuleCardComponent {
     readonly inventoryCard: Locator
     readonly replenishmentCard: Locator
     readonly auditLogsCard: Locator
+    readonly myAppointmentsCard : Locator
 
     constructor(page: Page) {
         this.page = page
@@ -23,6 +24,7 @@ export class DashboardModuleCardComponent {
         this.inventoryCard = this.page.locator("//div[@class='dashboard-card']//h3[text()='Inventory']")
         this.replenishmentCard = this.page.locator("//div[@class='dashboard-card']//h3[text()='Replenishment']")
         this.auditLogsCard = this.page.locator("//div[@class='dashboard-card']//h3[text()='Audit Logs']")
+        this.myAppointmentsCard = this.page.locator("//div[@class='dashboard-card']//h3[text()='My Appointments']")
     }
 
     async clickModule(module: DashboardModule) {
@@ -34,7 +36,8 @@ export class DashboardModuleCardComponent {
             refillRequests: this.refillRequestCard,
             inventory: this.inventoryCard,
             replenishment: this.replenishmentCard,
-            auditLogs: this.auditLogsCard
+            auditLogs: this.auditLogsCard,
+            myAppointments: this.myAppointmentsCard
         };
         await cards[module].click();
     }

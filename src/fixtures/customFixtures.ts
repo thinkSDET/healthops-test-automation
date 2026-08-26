@@ -32,6 +32,7 @@ import { mergeTests } from "@playwright/test";
 import{test as pageObjectFixture} from '../fixtures/pageObjectFixture'
 /** Import data fixtures (patientRegistration, login test data) */
 import{test as dataFixture} from '../fixtures/dataFixture'
+import{test as registrationFixture} from '../fixtures/registrationFixture'
 
 /**
  * Merged test object combining both fixture modules.
@@ -40,7 +41,7 @@ import{test as dataFixture} from '../fixtures/dataFixture'
  * - All data fixtures: patientRegistration, login
  * - All standard Playwright fixtures: page, browser, context, etc.
  */
-export const test = mergeTests(pageObjectFixture,dataFixture)
+export const test = mergeTests(pageObjectFixture,dataFixture,registrationFixture)
 
 /** Re-export expect for assertions (same as @playwright/test) */
 export {expect} from '@playwright/test'
