@@ -3,7 +3,7 @@
     "valid": {
       "email": "admin@healthcare.local",
       "password": "Admin@12345",
-      "aapUserName" : "System Administrator",
+      "appUserName" : "System Administrator",
       "appUserRole" : "ADMIN"
     },
     "wrongPassword": {
